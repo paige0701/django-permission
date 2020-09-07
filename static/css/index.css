@@ -1,0 +1,46 @@
+body {
+    margin:0
+}
+
+header {
+    position: fixed;
+    height: 40px;
+    top:0;
+    left: 0;
+    background-color: darkgray;
+    width: 100%;
+}
+
+.header-container {
+    padding: 2px
+}
+
+.left-column ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
+
+.left-column ul li {
+    padding-bottom: 35px;
+}
+
+.left-column ul li a {
+    text-decoration: none;
+}
+
+.left-column-content {
+    padding: 5px;
+    text-align: center;
+}
+
+.right-column-content {
+    margin: 5px 20px;
+}
+
+
+.main-container {
+    position: relative;
+    top: 40px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+}

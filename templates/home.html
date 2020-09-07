@@ -1,7 +1,16 @@
 {% extends  'base.html' %}
 
 {% block title %}Home{% endblock %}
+{% block header %}This is header{% endblock %}
+{% block leftheader %}
+    <ul>
+        <li><a href="">Dashboard</a></li>
+        <li><a href="">Knowledge</a></li>
+        <li><a href="">Ontology</a></li>
+        <li><a href="">Users</a></li>
+    </ul>
 
+{% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
         Hi {{ user.first_name }}!
