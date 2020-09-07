@@ -50,7 +50,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         ordering = ('email',)
         permissions = (
-            ('knowledge.view', 'View knowledge.'),
+            ('knowledge.view', 'View knowledge'),
             ('knowledge.create', 'Create knowledge'),
             ('knowledge.update', 'Update knowledge'),
             ('knowledge.delete', 'Delete knowledge'),
