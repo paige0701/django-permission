@@ -3,3 +3,8 @@
 .pycache
 db.sqlite3
 venv/
+__pycache__/
+*.py[cod]
+*.pyc
+**/__pycache__
+*/__pycache__
