@@ -1,7 +1,15 @@
-
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Login</button>
-</form>
+{% extends 'home.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <h2>Already logged in</h2>
+        <a href="{% url 'home' %}">Back to home</a>
+    {% else %}
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    {% endif %}
+{% endblock %}
