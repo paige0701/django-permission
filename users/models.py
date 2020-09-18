@@ -1,9 +1,9 @@
 from django.contrib.auth.base_user import BaseUserManager
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, Group
 
 # Create your models here.
 from django.db import models
-from django.db.models import Q
+from django.db.models import CASCADE
 from django.utils import timezone
 
 from users import permissions
@@ -41,7 +41,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     # 활성화 -> 유저는 삭제하지 않고 is_active를 false로 한다.
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
 
@@ -49,20 +49,14 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     class Meta:
         ordering = ('email',)
-        permissions = (
-            ('knowledge.view', 'View knowledge'),
-            ('knowledge.create', 'Create knowledge'),
-            ('knowledge.update', 'Update knowledge'),
-            ('knowledge.delete', 'Delete knowledge'),
-            ('user.view', 'View user'),
-            ('user.create', 'Create user'),
-            ('user.update', 'Update user'),
-            ('user.delete', 'Delete user'),
-            ('ontology.view', 'View ontology'),
-            ('ontology.create', 'Create ontology'),
-            ('ontology.update', 'Update ontology'),
-            ('ontology.delete', 'Delete ontology'),
-        )
 
     def __str__(self):
         return self.email
+
+
+class CustomGroup(models.Model):
+    group = models.OneToOneField(Group, on_delete=CASCADE, blank=True, null=True)
+    description = models.TextField(blank=True, null=True, default='')
+
+    class Meta:
+        default_permissions = ()
