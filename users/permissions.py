@@ -8,8 +8,8 @@ class BasePermissionEnum(Enum):
 
 
 class AccountPermissions(BasePermissionEnum):
-    MANAGE_USERS = 'account.manage_users'
-    MANAGE_STAFF = 'account.manage_staff'
+    MANAGE_USERS = 'users.manage_users'
+    MANAGE_STAFF = 'users.manage_staff'
 
 
 class KnowledgePermissions(BasePermissionEnum):
