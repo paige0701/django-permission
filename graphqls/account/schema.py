@@ -1,13 +1,13 @@
 import graphene
+from graphene import relay
 
-from users.models import CustomUser
 from graphqls.account.types import CustomUserType
+
+from graphene_django.filter import DjangoFilterConnectionField
 
 
 class AccountQueries(graphene.ObjectType):
 
-    users = graphene.List(CustomUserType)
+    users = DjangoFilterConnectionField(CustomUserType)
+    user = relay.Node.Field(CustomUserType)
 
-    def resolve_users(root, info):
-        tmp = CustomUser.objects.all()
-        return tmp
